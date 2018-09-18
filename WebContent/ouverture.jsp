@@ -1,48 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="ca.qc.cgodin.model.*" %>
-	<%@ page import="java.util.*, java.util.List" %>
+	<%@ page import="ca.qc.cgodin.model.Annonce" %>
+<%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<style>
-	html, body{
-		width: 100%;
-		height: 100%;
-		margin: 10px;
-		padding: 10px;
-	}
-	
-</style>
-<title>Rent4All</title>
+<title>Rent4All - Bienvenue</title>
+<link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
-<header></header>
-<nav style='height: 50px; background-color: rgb(20,0,220);'>
-	<button onclick="login">Login</button>
-</nav>
 <body>
-
+<div id="container">
+<div class="nav">
+	<a class="btn" href="login.jsp">Se connecter</a>
+</div>
+<h3>Toutes les dernieres annonces</h3>
 <%
-	List<Annonce> ann_list = null;
-	DBManager db = new DBManager();
-	ann_list = db.getAnnonceList();
+	ArrayList<Annonce> ann_list = new ArrayList<Annonce>();
 %>
-<h1>Toutes les dernières annonces</h1>
+<p></p>
 
 	<table border='1'>
   <%
  	for(Annonce a : ann_list){
   %>
 		<tr>
-			<td><%=a.getTitre()%></td>
-			<td><%=a.getDescription()%></td>
-			<td><%=a.getAmount()%></td>
+			<td><img width="100px" height="50px" src=""/></td>
+			<td><%= a.getTitre() %></td>
+			<td><%= a.getDescription() %></td>
+			<td><%=a.getAmount() %></td>
 		</tr>
   <%
  	}
   %>
 	</table>
+</div>
 </body>
 <footer></footer>
 

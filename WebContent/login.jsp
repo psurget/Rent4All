@@ -1,40 +1,82 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-	<%@ page import="java.util.*" %>
+	pageEncoding="UTF-8"%>
+<%@ page import="ca.qc.cgodin.model.Annonce"%>
+<%@ page import="java.util.*"%>
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Rent4All - Nouvelle Session</title>
+<title>Rent4All</title>
+<link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
+
 <body>
-<div>
-	<h4>Ouvrir une session</h4>
-	<form id="login" action="login.jsp">
-		<label for="user">Utilisateur</label>
-		<input type="text" name="user"><br/>
-		<label for="pswd">Mot de passe</label>
-		<input type="password" name="pswd"><br/><br/>
-		
-		<input type="submit" value="Ouvrir une session"/>
-	</form>
-	</div>
-	<div>
-		<h4>S'inscrire</h4>
-		<form id="newUser" action="newUser">
-		<label for="email">Courriel</label>
-		<input type="text" name="email"><br/>
-		<label for="pswd">Mot de passe</label>
-		<input type="password" name="pswd"><br/>
-		<label for="fname">Prénom</label>
-		<input type="text" name="fname"><br/>
-		<label for="lastname">Nom</label>
-		<input type="text" name="lastname"><br/>
-		<label for="phone">Téléphone</label>
-		<input type="text" name="phone"><br/><br/>
-		
-		<input type="submit" value="S'inscrire"/>
-		</form>
-	</div>
+
+	<div id="container">
+		<div class="nav">
+			<a class="btn" href="ouverture.jsp">< Accueil</a>
+		</div>
+		<h3 style="text-align: center;">Ouvrir une session ou créer un
+			compte</h3>
+		<table width="100%">
+			<tr>
+				<th width="50%">Ouvrir une session</th>
+				<th>Créer un compte</th>
+			</tr>
+			<tr>
+				<td width="50%">		
+					<form id="login" action="" method="post">
+						<table>
+							<tr>
+								<td>Courriel</td>
+									<td>
+										<input type="text" name="email">
+									</td>
+								</tr>
+							<tr>
+								<td>Mot de passe</td>
+								<td>
+									<input type="password" name="pswd">
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<input type="submit" value="Se connecter"/>
+								</td>
+							</tr>
+						</table>
+					</form>
+				</td>
+				<td width="50%">				
+					<form id="newUser" action="http://localhost:8080/Rent4All/UserManager?AddUser">
+					<table width="100%">
+					<tr>
+						<td>Courriel</td>
+						<td><input type="text" name="email"></td>
+					</tr>
+					<tr>
+						<td>Mot de passe</td>
+						<td><input type="password" name="pswd"></td>
+					</tr>
+					<tr>
+						<td>Prénom</td>
+						<td><input type="text" name="fname"></td>
+					</tr>
+					<tr>
+						<td>Nom</td>
+						<td><input type="text" name="lastname"></td>
+					</tr>
+					<tr>
+						<td>Téléphone</td>
+						<td><input type="text" name="phone"></td>
+					</tr>
+					</table>					
+					</form>
+					<br/>
+					<input type="submit" value="S'inscrire" />	
+				</td>
+			</tr>
+		</table>
 </body>
 </html>

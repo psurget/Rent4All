@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ca.qc.cgodin.model.Annonce;
-import ca.qc.cgodin.model.DBManager;
+import ca.qc.cgodin.model.UserManager;
 
 /**
  * Servlet implementation class AddAnnonceServlet
@@ -44,7 +44,7 @@ public class AddAnnonceServlet extends HttpServlet {
 		//(int userID, String titre, String descr, Double amount, String category) 
 		Annonce ann = new Annonce(userId, titre, desc, amnt, cat);
 		try {
-			DBManager db = new DBManager();
+			UserManager db = new UserManager();
 		
 		} catch (Exception e) {
 			// TODO: handle exception

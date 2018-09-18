@@ -12,7 +12,7 @@ public class User {
     private Timestamp CreationTS;
     private Timestamp ModificationTS;
     private String Password;
-    private String Statut;
+    private String Status;
 
  // CONSTRUCTORS   
    
@@ -24,7 +24,7 @@ public class User {
     	Phone = phone;
     	CreationTS = getCurTS();
     	Password = password;
-    	Statut = "actif";
+    	Status = "actif";
     }
 
     
@@ -33,20 +33,20 @@ public class User {
     	Email = email;
     	Phone = phone;
     	Password = password;
-    	Statut = "actif";
+    	Status = "actif";
     }
     
     public User(String email, String phone,  String password) {
     	Email = email;
     	Phone = phone;
     	Password = password;
-    	Statut = "actif";
+    	Status = "actif";
     }
     
     public User(String email, String password) {
     	Email = email;
     	Password = password;
-    	Statut = "actif";
+    	Status = "actif";
     }
     
     public User() { }
@@ -56,7 +56,8 @@ public class User {
     	Timestamp ts = new Timestamp(calendar.getTime().getTime());
     	return ts;
     }
-
+    
+    
 // GETTERS & SETTERS    
     
 	public int getUserID() {
@@ -108,11 +109,11 @@ public class User {
 	public void setPassword(String string) {
 		Password = string;
 	}
-	public String getStatut() {
-		return Statut;
+	public String getStatus() {
+		return Status;
 	}
-	public void setStatut(String statut) {
-		Statut = statut;
+	public void setStatus(String status) {
+		Status = status;
 	}
     
 }
