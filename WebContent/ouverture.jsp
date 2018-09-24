@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-	<%@ page import="ca.qc.cgodin.model.Annonce" %>
+	<%@ page import="ca.qc.cgodin.model.*" %>
 <%@ page import="java.util.*" %>
 <!DOCTYPE html>
 <html>
@@ -16,7 +16,9 @@
 </div>
 <h3>Toutes les dernieres annonces</h3>
 <%
-	ArrayList<Annonce> ann_list = new ArrayList<Annonce>();
+	AnnManager annDb = new AnnManager();
+	List<Annonce> ann_list = new ArrayList<Annonce>();
+	ann_list = annDb.getAnnonceList();
 %>
 <p></p>
 

@@ -9,7 +9,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.mysql.cj.protocol.Resultset;
 
 // ===== DB MANAGER =======
 public class UserManager {
@@ -68,6 +67,40 @@ public class UserManager {
 
 		return UrlSch + servAddr + ":" + port + "/" + DBname + "?useSSL=" + ssl + "&serverTimezone=UTC";
 
+	}
+
+// ======= GET USER INFOS =========
+	public User getUserInfos(String email){
+		Statement stmt = null;
+		User u = new User();
+		try {
+			stmt = conn.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		ResultSet res = null;
+		String query = "SELECT * FROM users WHERE Email=" + sQuotes(email);
+		try {
+			res = stmt.executeQuery(query);
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			while (res.next()) {
+				u.setFirstName(res.getString("UserID"));
+				u.setLastName(res.getString("LastName"));
+				u.setLastName(res.getString("FirstName"));
+				u.setEmail(res.getString("Email"));
+				u.setPhone(res.getString("Phone"));
+				u.setStatus(res.getString("Statut"));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return u;
 	}
 
 // ======== LIST USERS ======
@@ -191,12 +224,12 @@ public class UserManager {
 		String query = "SELECT * from users Where Email=" + sQuotes(email) + " and Password=" + sQuotes(pswd);
 		try {
 			res = stmt.executeQuery(query);
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+		} catch (SQLException e){
 			e.printStackTrace();
 		}
 		return (res!=null);
 	}
+	
 		
 	public String sQuotes(String txt) {
 		return "'" + txt + "'";

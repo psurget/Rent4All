@@ -7,12 +7,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.jasper.tagplugins.jstl.core.Redirect;
+
+import ca.qc.cgodin.model.AnnManager;
 import ca.qc.cgodin.model.Annonce;
 import ca.qc.cgodin.model.UserManager;
 
-/**
- * Servlet implementation class AddAnnonceServlet
- */
 @WebServlet("/AddAnnonceServlet")
 public class AddAnnonceServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,19 +35,24 @@ public class AddAnnonceServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		int userId = Integer.parseInt(request.getParameter("userId"));
 		String titre = request.getParameter("titre");
 		String cat = request.getParameter("category");
 		String desc = request.getParameter("description");
 		Double amnt = Double.parseDouble(request.getParameter("amount"));
-		int userId = Integer.parseInt(request.getParameter("userID"));
-		
-		//(int userID, String titre, String descr, Double amount, String category) 
-		Annonce ann = new Annonce(userId, titre, desc, amnt, cat);
-		try {
-			UserManager db = new UserManager();
-		
+		AnnManager AnnMan = new AnnManager();
+		try {		
+			Annonce ann = new Annonce();
+			ann.setUserID(userId);
+			ann.setTitre(titre);
+			ann.setCategory(cat);
+			ann.setDescription(desc);
+			ann.setAmount(amnt);
+					
+			AnnMan.addAnnonce(ann);
+			
 		} catch (Exception e) {
-			// TODO: handle exception
+			e.printStackTrace();			
 		}
 		
 		

@@ -14,5 +14,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="C:/Users/surge/Google Drive/Ressources/Java/mysql-connector-java-8.0.12.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/Utilities"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>
